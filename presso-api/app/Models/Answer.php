@@ -11,6 +11,11 @@ class Answer extends Model
 
     protected $table = 'answers';
 
+    protected $fillable = [
+        'questionId',
+        'answer',
+    ];
+
     public function question() {
         return $this->belongsTo('App\Models\Question', 'questionId');
     }
