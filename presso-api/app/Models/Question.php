@@ -11,6 +11,10 @@ class Question extends Model
 
     protected $table = 'questions';
 
+    protected $fillable = [
+        'question'
+    ];
+
     public function answers() {
         return $this->hasMany('App\Models\Answer');
     }
