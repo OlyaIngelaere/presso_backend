@@ -16,7 +16,14 @@
                 <strong>Question:</strong> <br/>
                 {{ $question->question }}
             </div>
-        </div>
+            <ul>
+                <?php foreach ($question->answers as $answer): ?>
+                    <li>
+                        <?= $answer->answer ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>          
     </div>
 
   </div>

@@ -18,8 +18,8 @@
             <thead>
                 <tr>
                     <th width="80px">No</th>
-                    <th>Question</th>
                     <th>Answer</th>
+                    <th>Question</th>
                     <th width="250px">Action</th>
                 </tr>
             </thead>
@@ -28,8 +28,8 @@
             @forelse ($answers as $answer)
                 <tr>
                     <td>{{ $answer->id }}</td>
-                    <td>{{ $answer->question->question }}</td>
                     <td>{{ $answer->answer }}</td>
+                    <td>{{ $answer->question->question }}</td>
                     <td>
                         <form action="{{ route('answers.destroy',$answer->id) }}" method="POST">
 
