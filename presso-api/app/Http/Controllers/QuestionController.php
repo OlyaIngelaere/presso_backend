@@ -17,7 +17,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::orderBy('id')->latest()->paginate(5);
+        $questions = Question::with(['answers'])->orderBy('id')->latest()->paginate(5);
 
         return view('questions.index', compact('questions'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -78,5 +78,11 @@ class QuestionController extends Controller
 
         return redirect()->route('questions.index')
                         ->with('success','Question deleted successfully');
+    }
+
+      // Get all coffee capsules of type Original
+    function getQuestionWithAnswers($id){
+        $question = Question::find($id)::with(['answers'])->get();
+        return response()->json($question);
     }
 }
