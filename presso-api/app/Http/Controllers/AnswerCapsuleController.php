@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\AnswerCapsule;
-use App\Models\Question;
 use App\Models\Answer;
 use App\Models\Capsule;
+use App\Models\SessionAnswer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -85,5 +85,28 @@ class AnswerCapsuleController extends Controller
 
         return redirect()->route('answerCapsules.index')
                         ->with('success','Answer - Capsule deleted successfully');
+    }
+
+    // Get reccomended capsules
+    function getRecommendedCapsules($sessionId){
+        $sessionAnswers = SessionAnswer::where("sessionId", $sessionId)->with('answer.answerCapsules.capsule')->get();
+
+        $recommendations = array();
+        foreach($sessionAnswers as $sessionAnswer){
+            foreach($sessionAnswer->answer->answerCapsules as $answerCapsule){
+                if(isset($recommendations[$answerCapsule->capsule->id])){
+                    $recommendations[$answerCapsule->capsule->id] += 1;
+                }
+                else{
+                    $recommendations[$answerCapsule->capsule->id] = 1;
+                }
+            }
+        }
+        
+        arsort($recommendations);
+        $recommendations = array_slice(array_keys($recommendations), 0, 3);
+        $capsules = Capsule::whereIn('id', $recommendations)->get();
+
+        return response()->json($capsules);
     }
 }
