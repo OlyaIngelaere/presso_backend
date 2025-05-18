@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AnswerCapsule;
 use App\Models\Answer;
 use App\Models\Capsule;
+use App\Models\Session;
 use App\Models\SessionAnswer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -88,8 +89,10 @@ class AnswerCapsuleController extends Controller
     }
 
     // Get reccomended capsules
-    function getRecommendedCapsules($sessionId){
-        $sessionAnswers = SessionAnswer::where("sessionId", $sessionId)->with('answer.answerCapsules.capsule')->get();
+    function getRecommendedCapsules($sessionCode)
+    {   
+        $session = Session::where("code", $sessionCode)->first();
+        $sessionAnswers = SessionAnswer::where("sessionId", $session->id)->with('answer.answerCapsules.capsule')->get();
 
         $recommendations = array();
         foreach($sessionAnswers as $sessionAnswer){
