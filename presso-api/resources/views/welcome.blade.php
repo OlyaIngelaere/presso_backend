@@ -13,6 +13,9 @@
       <li class="nav-item border rounded px-3 py-2">
         <a class="nav-link" href="{{ url('/answers') }}">Answers</a>
       </li>
+      <li class="nav-item border rounded px-3 py-2">
+        <a class="nav-link" href="{{ url('/answerCapsules') }}">Answer - Capsules</a>
+      </li>
     </ul>
   </div>
 </nav>

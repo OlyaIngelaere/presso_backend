@@ -31,6 +31,9 @@
                     <li class="nav-item">
                         <a class="nav-link"href="{{ url('/answers') }}">Answers</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link"href="{{ url('/answerCapsules') }}">Answers - Capsules</a>
+                    </li>
                 </ul>
             </div>
         </div>
