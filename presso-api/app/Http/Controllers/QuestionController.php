@@ -80,9 +80,9 @@ class QuestionController extends Controller
                         ->with('success','Question deleted successfully');
     }
 
-      // Get all coffee capsules of type Original
+    // Get question with answers
     function getQuestionWithAnswers($id){
-        $question = Question::find($id)::with(['answers'])->get();
+        $question = Question::where("id", $id)->with(['answers'])->first();
         return response()->json($question);
     }
 }
