@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CapsuleController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,5 @@ Route::delete('/cart/{id}', [CartController::class, 'destroy']); // remove item
 // ABOUT CHECKOUT
 Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::post('/checkout', [CheckoutController::class, 'store']);
+
+Route::post('/checkout', [PaymentController::class, 'checkout']);
