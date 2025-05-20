@@ -5,22 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Answer extends Model
+class SessionAnswer extends Model
 {
     use HasFactory;
 
-    protected $table = 'answers';
+    protected $table = 'sessionAnswers';
 
     protected $fillable = [
         'questionId',
-        'answer',
+        'answerId',
+        'sessionId'
     ];
 
     public function question() {
         return $this->belongsTo(Question::class, 'questionId');
     }
 
-    public function answerCapsules() {
-        return $this->hasMany(AnswerCapsule::class, "answerId");
+    public function answer() {
+        return $this->belongsTo(Answer::class, 'answerId');
+    }
+
+    public function session() {
+        return $this->belongsTo(Session::class, 'sessionId');
     }
 }

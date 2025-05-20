@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="card mt-5">
-  <h2 class="card-header">Answer CRUD</h2>
+  <h2 class="card-header">Answer - Capsule CRUD</h2>
   <div class="card-body">
 
         @session('success')
@@ -11,31 +11,33 @@
         @endsession
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a class="btn btn-success btn-sm" href="{{ route('answers.create') }}"> <i class="fa fa-plus"></i> Create New Answer</a>
+            <a class="btn btn-success btn-sm" href="{{ route('answerCapsules.create') }}"> <i class="fa fa-plus"></i> Create New Answer - Capsule</a>
         </div>
 
         <table class="table table-bordered table-striped mt-4">
             <thead>
                 <tr>
                     <th width="80px">No</th>
-                    <th>Answer</th>
                     <th>Question</th>
+                    <th>Answer</th>
+                    <th>Capsule</th>
                     <th width="250px">Action</th>
                 </tr>
             </thead>
 
             <tbody>
-            @forelse ($answers as $answer)
+            @forelse ($answerCapsules as $answerCapsule)
                 <tr>
-                    <td>{{ $answer->id }}</td>
-                    <td>{{ $answer->answer }}</td>
-                    <td>{{ $answer->question->question }}</td>
+                    <td>{{ $answerCapsule->id }}</td>
+                    <td>{{ $answerCapsule->answer->question->question }}</td>
+                    <td>{{ $answerCapsule->answer->answer }}</td>
+                    <td>{{ $answerCapsule->capsule->name }}</td>
                     <td>
-                        <form action="{{ route('answers.destroy',$answer->id) }}" method="POST">
+                        <form action="{{ route('answerCapsules.destroy',$answerCapsule->id) }}" method="POST">
 
-                            <a class="btn btn-info btn-sm" href="{{ route('answers.show',$answer->id) }}"><i class="fa-solid fa-list"></i> Show</a>
+                            <a class="btn btn-info btn-sm" href="{{ route('answerCapsules.show',$answerCapsule->id) }}"><i class="fa-solid fa-list"></i> Show</a>
 
-                            <a class="btn btn-primary btn-sm" href="{{ route('answers.edit',$answer->id) }}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('answerCapsules.edit',$answerCapsule->id) }}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
 
                             @csrf
                             @method('DELETE')
@@ -53,7 +55,7 @@
 
         </table>
 
-        {!! $answers->links() !!}
+        {!! $answerCapsules->links() !!}
 
   </div>
 </div>

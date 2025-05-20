@@ -30,5 +30,9 @@ class DatabaseSeeder extends Seeder
         foreach ($capsules as $capsule) {
             Capsule::create($capsule);
         }
+
+        $this->call([
+            QuizSeeder::class,
+        ]);
     }
 }

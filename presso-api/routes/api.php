@@ -6,6 +6,9 @@ use App\Http\Controllers\CapsuleController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\AnswerCapsuleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +41,14 @@ Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::post('/checkout', [CheckoutController::class, 'store']);
 
 Route::post('/checkout', [PaymentController::class, 'checkout']);
+// ABOUT QUESTIONS
+Route::get('/question/{id}', [QuestionController::class, 'getQuestionWithAnswers']);
+
+// ABOUT SESSION
+Route::get('/session', [SessionController::class, 'getNewSession']);
+
+// ABOUT SESSION ANSWER
+Route::post('/sessionanswer', [SessionController::class, 'sessionAnswer']);
+
+// ABOUT SESSION ANSWER
+Route::get('/answercapsules/{id}', [AnswerCapsuleController::class, 'getRecommendedCapsules']);

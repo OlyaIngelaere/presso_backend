@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('answerCoffees', function (Blueprint $table) {
+        Schema::create('answerCapsules', function (Blueprint $table) {
             $table->id();
-            $table->integer('questionId'); 
-            $table->foreign('questionId')->references('id')->on('questions');
             $table->integer('answerId'); 
             $table->foreign('answerId')->references('id')->on('answers');
-            $table->integer('coffeeId'); 
-            $table->foreign('coffeeId')->references('id')->on('coffee');
+            $table->integer('capsuleId'); 
+            $table->foreign('capsuleId')->references('id')->on('capsules');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('answerCoffees');
+        Schema::dropIfExists('answerCapsules');
     }
 };
