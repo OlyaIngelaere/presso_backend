@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CapsuleController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\AnswerCapsuleController;
@@ -39,6 +40,7 @@ Route::delete('/cart/{id}', [CartController::class, 'destroy']); // remove item
 Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::post('/checkout', [CheckoutController::class, 'store']);
 
+Route::post('/checkout', [PaymentController::class, 'checkout']);
 // ABOUT QUESTIONS
 Route::get('/question/{id}', [QuestionController::class, 'getQuestionWithAnswers']);
 
