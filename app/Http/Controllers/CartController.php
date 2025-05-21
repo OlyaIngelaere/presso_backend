@@ -20,27 +20,33 @@ class CartController extends Controller
      * Add capsule to cart OR increase quantity if already exists
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'capsule_id' => 'required|exists:capsules,id',
-            'quantity' => 'required|integer|min:1'
-        ]);
+{
+    $validated = $request->validate([
+        'items.*.capsule_id' => 'required|exists:capsules,id',
+        'items.*.quantity' => 'required|integer|min:1',
+    ]);
 
-        // Check if item already exists
-        $item = Cart::where('capsule_id', $request->capsule_id)->first();
+    $results = [];
+
+    foreach ($validated['items'] as $cartItem) {
+        $item = Cart::where('capsule_id', $cartItem['capsule_id'])->first();
 
         if ($item) {
-            $item->quantity += $request->quantity;
+            $item->quantity += $cartItem['quantity'];
             $item->save();
         } else {
             $item = Cart::create([
-                'capsule_id' => $request->capsule_id,
-                'quantity' => $request->quantity
+                'capsule_id' => $cartItem['capsule_id'],
+                'quantity' => $cartItem['quantity'],
             ]);
         }
 
-        return response()->json($item->load('capsule'), 201);
+        $results[] = $item->load('capsule'); // Include relationship if needed
     }
+
+    return response()->json($results, 201);
+}
+
 
     /**
      * Update quantity of an item with the cart line ID
