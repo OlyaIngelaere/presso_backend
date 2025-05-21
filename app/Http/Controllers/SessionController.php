@@ -30,6 +30,16 @@ class SessionController extends Controller
     }
 
     /**
+     * Create existing session
+    */
+    public function getSession($code)
+    {
+        $session = Session::where("code", $code)->first();
+        return response()->json($session);
+    }
+
+
+    /**
      * Create new session answer
     */
     public function sessionAnswer(Request $request)

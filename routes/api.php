@@ -44,6 +44,7 @@ Route::get('/question/{id}', [QuestionController::class, 'getQuestionWithAnswers
 
 // ABOUT SESSION
 Route::get('/session', [SessionController::class, 'getNewSession']);
+Route::get('/session/{code}', [SessionController::class, 'getSession']);
 
 // ABOUT SESSION ANSWER
 Route::post('/sessionanswer', [SessionController::class, 'sessionAnswer']);
