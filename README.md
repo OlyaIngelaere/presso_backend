@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -59,3 +60,30 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+# ☕ Presso - Coffee Capsule Finder
+
+This project contains the backend for the Presso app (https://github.com/r0879042/presso-app).
+
+---
+
+## 🛠 Tech Stack
+
+- Framework: Laravel (PHP)
+- Database: SQLite
+- Deployment: Docker / [Render](https://render.com/)
+
+---
+
+## 🧑‍💻 Getting Started
+
+After cloning the project, you have to run the following commands to run the project.
+
+```bash
+
+#  To install all packages
+composer install
+
+#  To run the api
+php artisan serve
+>>>>>>> main
