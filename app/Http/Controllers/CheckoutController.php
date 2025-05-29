@@ -22,12 +22,7 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        // OPTIONAL: if you want frontend to send full cart:
-        // $request->validate([
-        //     'cart' => 'required|array'
-        // ]);
-
-        // OR get cart items directly from database (simpler)
+        // get cart items directly from database
         $cartItems = Cart::with('capsule')->get();
 
         if ($cartItems->isEmpty()) {
