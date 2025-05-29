@@ -18,10 +18,19 @@ After cloning the project, you have to run the following commands to run the pro
 
 ```bash
 
-#  To install all packages
+# Clone the repo
+git clone https://github.com/OlyaIngelaere/presso_backend
+
+# To go into the project
+cd presso_backend
+
+# To install all packages
 composer install
 
-#  To run the api
+# Generate key
+php artisan key:generate
+
+# To run the api
 php artisan serve
 
 # To login
