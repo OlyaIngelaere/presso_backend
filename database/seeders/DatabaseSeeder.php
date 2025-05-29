@@ -5,12 +5,19 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Capsule;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 
 class DatabaseSeeder extends Seeder
 {
     public function run()
     {
+        User::create([
+            'name' => 'Olya Ingelaere',
+            'email' => 'r0943033@student.thomasmore.be',
+            'password' => Hash::make('PressoLogin123')
+        ]);
+
         $capsules = [
             ['name' => 'Vienna Lungo', 'type' => 'Original', 'image' => 'vienna-lungo.jpg', 'description' => 'Inspired by Vienna’s coffee tradition.', 'flavour_profile' => 'Spicy & Woody'],
             ['name' => 'Stockholm Lungo', 'type' => 'Original', 'image' => 'stockholm-lungo.jpg', 'description' => 'Swedish balance & elegance.', 'flavour_profile' => 'Balanced & Smooth'],

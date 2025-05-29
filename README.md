@@ -23,3 +23,7 @@ composer install
 
 #  To run the api
 php artisan serve
+
+# To login
+Username: r0943033@student.thomasmore.be
+Password: PressoLogin123
