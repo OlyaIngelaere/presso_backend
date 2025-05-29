@@ -34,6 +34,14 @@
                     <li class="nav-item">
                         <a class="nav-link"href="{{ url('/answerCapsules') }}">Answers - Capsules</a>
                     </li>
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="nav-link btn btn-link">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>

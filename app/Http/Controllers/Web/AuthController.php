@@ -18,7 +18,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('web')->attempt($credentials, $request->filled('remember'))) {
-            return redirect()->intended('/welcome');
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([
