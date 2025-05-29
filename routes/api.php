@@ -42,7 +42,7 @@ Route::post('/checkout', [CheckoutController::class, 'store']);
 
 Route::post('/checkout', [PaymentController::class, 'checkout']);
 // ABOUT QUESTIONS
-Route::get('/question/{id}', [QuestionController::class, 'getQuestionWithAnswers']);
+Route::get('/question', [QuestionController::class, 'getQuestionsWithAnswers']);
 
 // ABOUT SESSION
 Route::get('/session', [SessionController::class, 'getNewSession']);

@@ -81,8 +81,8 @@ class QuestionController extends Controller
     }
 
     // Get question with answers
-    function getQuestionWithAnswers($id){
-        $question = Question::where("id", $id)->with(['answers'])->first();
-        return response()->json($question);
+    function getQuestionsWithAnswers(){
+        $questions = Question::with(['answers'])->get();
+        return response()->json($questions);
     }
 }
